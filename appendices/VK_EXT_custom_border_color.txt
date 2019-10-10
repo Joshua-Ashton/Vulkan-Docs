@@ -1,0 +1,63 @@
+include::{generated}/meta//VK_EXT_custom_border_color.txt[]
+
+*Last Modified Date*::
+    2019-10-10
+*IP Status*::
+    No known IP claims.
+*Contributors*::
+  - Joshua Ashton
+  - Liam Middlebrook, Nvidia
+
+This extension provides cross-vendor functionality to specify a custom border color
+for use when the texture address mode ename:VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER is used.
+
+The implementation should guarantee that the creation/destruction functions are thread-safe
+if required.
+
+The application should query slink:VkPhysicalDeviceCustomBorderColorFeaturesEXT if it desires to use border colors:
+slink:VkDeviceCustomBorderColorLimitsCreateInfoEXT should be specified at device-creation time as a pNext of VkDeviceCreateInfo
+if `hasLimits` is true in slink:VkPhysicalDeviceCustomBorderColorFeaturesEXT.
+Not specifying slink:VkDeviceCustomBorderColorLimitsCreateInfoEXT if `hasLimits` is true, will result in flink:vkCreateCustomBorderColorEXT returning VK_ERROR_TOO_MANY_OBJECTS.
+
+When creating a sampler with a custom border color, the `borderColor` attribute of 
+slink:VkSamplerCreateInfo should be set to ename:VK_BORDER_COLOR_CUSTOM, and
+have slink:VkSamplerCustomBorderColorCreateInfoEXT somewhere in the pNext chain.
+
+Using ename:VK_BORDER_COLOR_CUSTOM without a slink:VkSamplerCustomBorderColorCreateInfoEXT is undefined behaviour.
+slink:VkSamplerCustomBorderColorCreateInfoEXT will be ignored if ename:VK_BORDER_COLOR_CUSTOM is not specified for `borderColor`.
+
+=== New Object Types
+
+  * slink:VkCustomBorderColorEXT
+
+=== New Enum Constants
+
+  * Extending elink:VkStructureType:
+  ** ename:VK_STRUCTURE_TYPE_CUSTOM_BORDER_COLOR_CREATE_INFO_EXT
+  ** ename:VK_STRUCTURE_TYPE_SAMPLER_CUSTOM_BORDER_COLOR_CREATE_INFO_EXT
+  ** ename:VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_BORDER_COLOR_FEATURES_EXT
+  ** ename:VK_STRUCTURE_TYPE_DEVICE_CUSTOM_BORDER_COLOR_LIMITS_CREATE_INFO
+
+  * Extending elink:VkBorderColor:
+  ** ename:VK_BORDER_COLOR_CUSTOM_EXT
+
+=== New Structures
+
+  * slink:VkCustomBorderColorCreateInfoEXT
+  * slink:VkSamplerCustomBorderColorCreateInfoEXT
+  * slink:VkPhysicalDeviceCustomBorderColorFeaturesEXT
+  * slink:VkDeviceCustomBorderColorLimitsCreateInfoEXT
+
+=== New Functions
+
+  * flink:vkCreateCustomBorderColorEXT
+  * flink:vkDestroyCustomBorderColorEXT
+
+=== Issues
+
+1) Should VkClearColorValue be used for the border color value, or should we have our own struct/union?
+
+=== Version History
+
+  * Revision 1, 2019-10-10 (Joshua Ashton)
+    - Internal revisions.

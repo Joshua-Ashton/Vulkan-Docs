@@ -374,6 +374,7 @@ typedef void <name>CAMetalLayer</name>;
         <type category="handle" parent="VkDevice"><type>VK_DEFINE_NON_DISPATCHABLE_HANDLE</type>(<name>VkValidationCacheEXT</name>)</type>
         <type category="handle" parent="VkDevice"><type>VK_DEFINE_NON_DISPATCHABLE_HANDLE</type>(<name>VkAccelerationStructureNV</name>)</type>
         <type category="handle" parent="VkDevice"><type>VK_DEFINE_NON_DISPATCHABLE_HANDLE</type>(<name>VkPerformanceConfigurationINTEL</name>)</type>
+        <type category="handle" parent="VkDevice"><type>VK_DEFINE_NON_DISPATCHABLE_HANDLE</type>(<name>VkCustomBorderColorEXT</name>)</type>
 
             <comment>WSI extensions</comment>
         <type category="handle"><type>VK_DEFINE_NON_DISPATCHABLE_HANDLE</type>(<name>VkDisplayKHR</name>)</type>
@@ -4205,6 +4206,26 @@ typedef void <name>CAMetalLayer</name>;
             <member noautovalidity="true"><type>void</type>*        <name>pNext</name></member>
             <member><type>VkBool32</type>                           <name>deviceCoherentMemory</name></member>
         </type>
+        <type category="struct" name="VkCustomBorderColorCreateInfoEXT">
+            <member values="VK_STRUCTURE_TYPE_CUSTOM_BORDER_COLOR_CREATE_INFO_EXT"><type>VkStructureType</type> <name>sType</name></member>
+            <member noautovalidity="true"><type>void</type>*                                                    <name>pNext</name></member>
+            <member><type>VkClearColorValue</type>                                                              <name>value</name></member>
+        </type>
+        <type category="struct" name="VkSamplerCustomBorderColorCreateInfoEXT" structextends="VkSamplerCreateInfo">
+            <member values="VK_STRUCTURE_TYPE_SAMPLER_CUSTOM_BORDER_COLOR_CREATE_INFO_EXT"><type>VkStructureType</type> <name>sType</name></member>
+            <member noautovalidity="true"><type>void</type>*                                                            <name>pNext</name></member>
+            <member><type>VkCustomBorderColorEXT</type>                                                                 <name>borderColor</name></member>
+        </type>
+        <type category="struct" name="VkPhysicalDeviceCustomBorderColorFeaturesEXT" structextends="VkPhysicalDeviceFeatures2" returnedonly="true">
+            <member values="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_BORDER_COLOR_FEATURES_EXT"><type>VkStructureType</type> <name>sType</name></member>
+            <member noautovalidity="true"><type>void</type>*                                                                 <name>pNext</name></member>
+            <member><type>VkBool32</type>                                                                                    <name>hasLimits</name></member>
+        </type>
+        <type category="struct" name="VkDeviceCustomBorderColorLimitsCreateInfoEXT" structextends="VkDeviceCreateInfo" returnedonly="true">
+            <member values="VK_STRUCTURE_TYPE_DEVICE_CUSTOM_BORDER_COLOR_LIMITS_CREATE_INFO_EXT"><type>VkStructureType</type> <name>sType</name></member>
+            <member noautovalidity="true"><type>void</type>*                                                                  <name>pNext</name></member>
+            <member><type>VkDeviceSize</type>                                                                                 <name>borderColorCount</name></member>
+        </type>
     </types>
 
     <comment>Vulkan enumerant (token) definitions</comment>
@@ -7846,6 +7867,19 @@ typedef void <name>CAMetalLayer</name>;
             <param externsync="true"><type>VkCommandBuffer</type> <name>commandBuffer</name></param>
             <param><type>uint32_t</type> <name>lineStippleFactor</name></param>
             <param><type>uint16_t</type> <name>lineStipplePattern</name></param>
+        </command>
+        <command successcodes="VK_SUCCESS" errorcodes="VK_ERROR_TOO_MANY_OBJECTS,VK_ERROR_OUT_OF_HOST_MEMORY">
+            <proto><type>VkResult</type> <name>vkCreateCustomBorderColorEXT</name></proto>
+            <param><type>VkDevice</type> <name>device</name></param>
+            <param>const <type>VkCustomBorderColorCreateInfoEXT</type>* <name>pCreateInfo</name></param>
+            <param optional="true">const <type>VkAllocationCallbacks</type>* <name>pAllocator</name></param>
+            <param><type>VkCustomBorderColorEXT</type>* <name>pBorderColor</name></param>
+        </command>
+        <command>
+            <proto><type>void</type> <name>vkDestroyCustomBorderColorEXT</name></proto>
+            <param><type>VkDevice</type> <name>device</name></param>
+            <param><type>VkCustomBorderColorEXT</type> <name>borderColor</name></param>
+            <param optional="true">const <type>VkAllocationCallbacks</type>* <name>pAllocator</name></param>
         </command>
     </commands>
 
@@ -11593,10 +11627,23 @@ typedef void <name>CAMetalLayer</name>;
                 <enum value="&quot;VK_NVX_extension_287&quot;"              name="VK_NVX_EXTENSION_287_EXTENSION_NAME"/>
             </require>
         </extension>
-        <extension name="VK_NVX_extension_288" number="288" author="NVX" contact="Liam Middlebrook @liam-middlebrook" supported="disabled">
+        <extension name="VK_EXT_custom_border_color" number="288" type="device" author="EXT" contact="Liam Middlebrook @liam-middlebrook" supported="vulkan">
             <require>
-                <enum value="0"                                             name="VK_NVX_EXTENSION_288_SPEC_VERSION"/>
-                <enum value="&quot;VK_NVX_extension_288&quot;"              name="VK_NVX_EXTENSION_288_EXTENSION_NAME"/>
+                <enum value="1"                                             name="VK_EXT_CUSTOM_BORDER_COLOR_SPEC_VERSION"/>
+                <enum value="&quot;VK_EXT_custom_border_color&quot;"        name="VK_EXT_CUSTOM_BORDER_COLOR_EXTENSION_NAME"/>
+                <enum offset="0" extends="VkStructureType"                  name="VK_STRUCTURE_TYPE_CUSTOM_BORDER_COLOR_CREATE_INFO_EXT"/>
+                <enum offset="1" extends="VkStructureType"                  name="VK_STRUCTURE_TYPE_SAMPLER_CUSTOM_BORDER_COLOR_CREATE_INFO_EXT"/>
+                <enum offset="2" extends="VkStructureType"                  name="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_BORDER_COLOR_FEATURES_EXT"/>
+                <enum offset="3" extends="VkStructureType"                  name="VK_STRUCTURE_TYPE_DEVICE_CUSTOM_BORDER_COLOR_LIMITS_CREATE_INFO_EXT"/>
+                <enum offset="0" extends="VkObjectType"                     name="VK_OBJECT_TYPE_CUSTOM_BORDER_COLOR_EXT" comment="VkCustomBorderColorEXT"/>
+                <enum offset="0" extends="VkBorderColor"                    name="VK_BORDER_COLOR_CUSTOM_EXT"/>
+                <type name="VkCustomBorderColorCreateInfoEXT"/>
+                <type name="VkSamplerCustomBorderColorCreateInfoEXT"/>
+                <type name="VkPhysicalDeviceCustomBorderColorFeaturesEXT"/>
+                <type name="VkDeviceCustomBorderColorLimitsCreateInfoEXT"/>
+                <type name="VkCustomBorderColorEXT"/>
+                <command name="vkCreateCustomBorderColorEXT"/>
+                <command name="vkDestroyCustomBorderColorEXT"/>
             </require>
         </extension>
         <extension name="VK_EXT_extension_289" number="289" author="EXT" contact="Jan-Harald Fredriksen @janharaldfredriksen-arm" supported="disabled">
