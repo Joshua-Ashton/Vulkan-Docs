@@ -11603,7 +11603,7 @@ typedef void <name>CAMetalLayer</name>;
                 <enum value="1"                                             name="VK_EXT_CUSTOM_BORDER_COLOR_SPEC_VERSION"/>
                 <enum value="&quot;VK_EXT_custom_border_color&quot;"        name="VK_EXT_CUSTOM_BORDER_COLOR_EXTENSION_NAME"/>
                 <enum offset="0" extends="VkStructureType"                  name="VK_STRUCTURE_TYPE_SAMPLER_CUSTOM_BORDER_COLOR_CREATE_INFO_EXT"/>
-                <enum offset="0" extends="VkBorderColor"                    name="VK_BORDER_COLOR_CUSTOM_EXT"/>
+                <enum offset="1" extends="VkBorderColor"                    name="VK_BORDER_COLOR_CUSTOM_EXT"/>
                 <type name="VkSamplerCustomBorderColorCreateInfoEXT"/>
             </require>
         </extension>

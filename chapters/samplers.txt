@@ -435,6 +435,13 @@ include::{generated}/api/enums/VkBorderColor.txt[]
 These colors are described in detail in <<textures-texel-replacement, Texel
 Replacement>>.
 
+ifdef::VK_EXT_custom_border_color[]
+  * ename:VK_BORDER_COLOR_CUSTOM_EXT indicates that a
+    slink:VkSamplerCustomBorderColorCreateInfoEXT structure is present in the
+    slink::VkSamplerCreateInfo::pname:pNext chain which contains color date
+    representative of a color which may not be listed above.
+endif::VK_EXT_custom_border_color[]
+
 --
 
 [open,refpage='vkDestroySampler',desc='Destroy a sampler object',type='protos']
@@ -856,3 +863,26 @@ include::{generated}/validity/protos/vkDestroySamplerYcbcrConversion.txt[]
 --
 
 endif::VK_VERSION_1_1,VK_KHR_sampler_ycbcr_conversion[]
+
+ifdef::VK_EXT_custom_border_color[]
+
+[open,refpage='VkSamplerCustomBorderColorCreateInfoEXT',desc='Structure specifying custom border color',type='structs']
+--
+
+Applications may wish to provide a custom border color which is not listed under
+ename:VkBorderColor, this structure allows for specifying a custom color value
+to be added to the slink:VkSamplerCreateInfo::pname:pNext chain.
+
+The sname:VkSamplerCustomBorderColorCreateInfoEXT structure is defined as:
+
+include::{generated}/api/structs/VkSamplerCustomBorderColorCreateInfoEXT.txt[]
+
+  * pname:sType is the type of this structure.
+  * pname:pNext is `NULL` or a pointer to an extension-specific structure.
+  * pname:borderColor is a elink:VkClearColor value representing the sampler
+    color. XXX[ljm]{fix this wording, right now is a bit circular}
+
+include::{generated}/validity/structs/VkSamplerCustomBorderColorCreateInfoEXT.txt[]
+--
+
+endif::VK_EXT_custom_border_color[]
