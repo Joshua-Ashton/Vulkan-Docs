@@ -1,7 +1,7 @@
 include::{generated}/meta//VK_EXT_custom_border_color.txt[]
 
 *Last Modified Date*::
-    2019-10-10
+    2019-10-11
 *IP Status*::
     No known IP claims.
 *Contributors*::
@@ -9,55 +9,52 @@ include::{generated}/meta//VK_EXT_custom_border_color.txt[]
   - Liam Middlebrook, Nvidia
 
 This extension provides cross-vendor functionality to specify a custom border color
-for use when the texture address mode ename:VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER is used.
+for use when the sampler address mode ename:VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER is used.
 
-The implementation should guarantee that the creation/destruction functions are thread-safe
-if required.
+To create a sampler which uses a custom border color the `borderColor` attribute
+of slink:VkSamplerCreateInfo must be set to ename:VK_BORDER_COLOR_CUSTOM_EXT.
 
-The application should query slink:VkPhysicalDeviceCustomBorderColorFeaturesEXT if it desires to use border colors:
-slink:VkDeviceCustomBorderColorLimitsCreateInfoEXT should be specified at device-creation time as a pNext of VkDeviceCreateInfo
-if `hasLimits` is true in slink:VkPhysicalDeviceCustomBorderColorFeaturesEXT.
-Not specifying slink:VkDeviceCustomBorderColorLimitsCreateInfoEXT if `hasLimits` is true, will result in flink:vkCreateCustomBorderColorEXT returning VK_ERROR_TOO_MANY_OBJECTS.
-
-When creating a sampler with a custom border color, the `borderColor` attribute of 
-slink:VkSamplerCreateInfo should be set to ename:VK_BORDER_COLOR_CUSTOM, and
-have slink:VkSamplerCustomBorderColorCreateInfoEXT somewhere in the pNext chain.
-
-Using ename:VK_BORDER_COLOR_CUSTOM without a slink:VkSamplerCustomBorderColorCreateInfoEXT is undefined behaviour.
-slink:VkSamplerCustomBorderColorCreateInfoEXT will be ignored if ename:VK_BORDER_COLOR_CUSTOM is not specified for `borderColor`.
-
-=== New Object Types
-
-  * slink:VkCustomBorderColorEXT
+When ename:VK_BORDER_COLOR_CUSTOM_EXT is supplied, applications must provide a
+slink:VkSamplerCustomBorderColorCreateInfoEXT in the pNext chain for
+slink:VkSamplerCreateInfo.
 
 === New Enum Constants
 
   * Extending elink:VkStructureType:
-  ** ename:VK_STRUCTURE_TYPE_CUSTOM_BORDER_COLOR_CREATE_INFO_EXT
   ** ename:VK_STRUCTURE_TYPE_SAMPLER_CUSTOM_BORDER_COLOR_CREATE_INFO_EXT
-  ** ename:VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_BORDER_COLOR_FEATURES_EXT
-  ** ename:VK_STRUCTURE_TYPE_DEVICE_CUSTOM_BORDER_COLOR_LIMITS_CREATE_INFO
 
   * Extending elink:VkBorderColor:
   ** ename:VK_BORDER_COLOR_CUSTOM_EXT
 
 === New Structures
 
-  * slink:VkCustomBorderColorCreateInfoEXT
   * slink:VkSamplerCustomBorderColorCreateInfoEXT
-  * slink:VkPhysicalDeviceCustomBorderColorFeaturesEXT
-  * slink:VkDeviceCustomBorderColorLimitsCreateInfoEXT
 
 === New Functions
 
-  * flink:vkCreateCustomBorderColorEXT
-  * flink:vkDestroyCustomBorderColorEXT
-
 === Issues
 
-1) Should VkClearColorValue be used for the border color value, or should we have our own struct/union?
+1) Should VkClearColorValue be used for the border color value, or should we
+have our own struct/union?
+Do we need to specify the type of the input values for the components? This is
+more of a concern if VkClearColorValue is used here because it provides a union
+of float,int,uint types.
+
+OPEN
+
+2) For hardware which supports a limited number of border colors what happens if
+that number is exceed? Should this be handled by the driver unbeknownst to the
+application. In Revision 1 we had solved this issue using a new Object type,
+however that may have lead to additional system resource consumption which would
+otherwise not be required.
+
+OPEN
 
 === Version History
 
   * Revision 1, 2019-10-10 (Joshua Ashton)
     - Internal revisions.
+
+  * Revision 2, 2019-10-11 (Liam Middlebrook)
+    - Remove VkCustomBorderColor object and associated functions
+    - Add issues concerning HW limitations for custom border color count
