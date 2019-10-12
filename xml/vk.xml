@@ -4213,7 +4213,7 @@ typedef void <name>CAMetalLayer</name>;
         <type category="struct" name="VkPhysicalDeviceCustomBorderColorPropertiesEXT" structextends="VkPhysicalDeviceProperties2" returnedonly="true">
             <member values="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_BORDER_COLOR_PROPERTIES_EXT"><type>VkStructureType</type> <name>sType</name></member>
             <member noautovalidity="true"><type>void</type>*                                                                   <name>pNext</name></member>
-            <member><type>VkDeviceSize</type>                                                                                  <name>maxUniqueCustomBorderColors</name></member>
+            <member><type>uint32_t</type>                                                                                      <name>maxUniqueCustomBorderColors</name></member>
         </type>
     </types>
 
