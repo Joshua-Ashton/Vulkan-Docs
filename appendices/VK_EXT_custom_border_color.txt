@@ -18,10 +18,18 @@ When ename:VK_BORDER_COLOR_CUSTOM_EXT is supplied, applications must provide a
 slink:VkSamplerCustomBorderColorCreateInfoEXT in the pNext chain for
 slink:VkSamplerCreateInfo.
 
+For implementations with a limited number of border colors, they should be reference counted
+when the sampler is created/destroyed. This means that freeing the last sampler that used
+a custom border color will also free up the slot for another border color to be used.
+
+The implementation should maintain the guarantee that flink:vkCreateSampler and
+flink:vkDestroySampler is thread-safe when a custom border color is used.
+
 === New Enum Constants
 
   * Extending elink:VkStructureType:
   ** ename:VK_STRUCTURE_TYPE_SAMPLER_CUSTOM_BORDER_COLOR_CREATE_INFO_EXT
+  ** ename:VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_BORDER_COLOR_PROPERTIES_EXT
 
   * Extending elink:VkBorderColor:
   ** ename:VK_BORDER_COLOR_CUSTOM_EXT
@@ -29,6 +37,7 @@ slink:VkSamplerCreateInfo.
 === New Structures
 
   * slink:VkSamplerCustomBorderColorCreateInfoEXT
+  * slink:VkPhysicalDeviceCustomBorderColorPropertiesEXT
 
 === New Functions
 
@@ -58,3 +67,8 @@ OPEN
   * Revision 2, 2019-10-11 (Liam Middlebrook)
     - Remove VkCustomBorderColor object and associated functions
     - Add issues concerning HW limitations for custom border color count
+
+  * Revision 3, 2019-10-12 (Joshua Ashton)
+    - Re-expose the limits for the maximum number of unique border colors
+    - Add extra details about border color tracking
+    - Fix typos

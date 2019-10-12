@@ -4208,7 +4208,12 @@ typedef void <name>CAMetalLayer</name>;
         <type category="struct" name="VkSamplerCustomBorderColorCreateInfoEXT" structextends="VkSamplerCreateInfo">
             <member values="VK_STRUCTURE_TYPE_SAMPLER_CUSTOM_BORDER_COLOR_CREATE_INFO_EXT"><type>VkStructureType</type> <name>sType</name></member>
             <member noautovalidity="true"><type>void</type>*                                                            <name>pNext</name></member>
-            <member><type>VkClearColorValue</type>                                                                 <name>borderColor</name></member>
+            <member><type>VkClearColorValue</type>                                                                      <name>borderColor</name></member>
+        </type>
+        <type category="struct" name="VkPhysicalDeviceCustomBorderColorPropertiesEXT" structextends="VkPhysicalDeviceProperties2" returnedonly="true">
+            <member values="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_BORDER_COLOR_PROPERTIES_EXT"><type>VkStructureType</type> <name>sType</name></member>
+            <member noautovalidity="true"><type>void</type>*                                                                   <name>pNext</name></member>
+            <member><type>VkDeviceSize</type>                                                                                  <name>maxUniqueCustomBorderColors</name></member>
         </type>
     </types>
 
@@ -11603,8 +11608,10 @@ typedef void <name>CAMetalLayer</name>;
                 <enum value="1"                                             name="VK_EXT_CUSTOM_BORDER_COLOR_SPEC_VERSION"/>
                 <enum value="&quot;VK_EXT_custom_border_color&quot;"        name="VK_EXT_CUSTOM_BORDER_COLOR_EXTENSION_NAME"/>
                 <enum offset="0" extends="VkStructureType"                  name="VK_STRUCTURE_TYPE_SAMPLER_CUSTOM_BORDER_COLOR_CREATE_INFO_EXT"/>
-                <enum offset="1" extends="VkBorderColor"                    name="VK_BORDER_COLOR_CUSTOM_EXT"/>
+                <enum offset="1" extends="VkStructureType"                  name="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_BORDER_COLOR_PROPERTIES_EXT"/>
+                <enum offset="2" extends="VkBorderColor"                    name="VK_BORDER_COLOR_CUSTOM_EXT"/>
                 <type name="VkSamplerCustomBorderColorCreateInfoEXT"/>
+                <type name="VkPhysicalDeviceCustomBorderColorPropertiesEXT"/>
             </require>
         </extension>
         <extension name="VK_EXT_extension_289" number="289" author="EXT" contact="Jan-Harald Fredriksen @janharaldfredriksen-arm" supported="disabled">

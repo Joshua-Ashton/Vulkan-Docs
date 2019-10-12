@@ -438,7 +438,7 @@ Replacement>>.
 ifdef::VK_EXT_custom_border_color[]
   * ename:VK_BORDER_COLOR_CUSTOM_EXT indicates that a
     slink:VkSamplerCustomBorderColorCreateInfoEXT structure is present in the
-    slink::VkSamplerCreateInfo::pname:pNext chain which contains color date
+    slink::VkSamplerCreateInfo::pname:pNext chain which contains color data
     representative of a color which may not be listed above.
 endif::VK_EXT_custom_border_color[]
 
