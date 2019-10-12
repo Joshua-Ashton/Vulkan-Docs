@@ -59,6 +59,13 @@ otherwise not be required.
 
 OPEN
 
+3) Should this be supported for immutable samplers at all, or by a feature bit?
+Some implementations may not be able to support custom border colors on
+immutable samplers -- is it worthwhile enabling this to work on them for
+implementations that can support it, or forbbiding it entirely.
+
+OPEN
+
 === Version History
 
   * Revision 1, 2019-10-10 (Joshua Ashton)
