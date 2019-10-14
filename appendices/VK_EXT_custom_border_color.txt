@@ -12,9 +12,13 @@ This extension provides cross-vendor functionality to specify a custom border co
 for use when the sampler address mode ename:VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER is used.
 
 To create a sampler which uses a custom border color
-slink:VkSamplerCreateInfo::pname:borderColor must be set to ename:VK_BORDER_COLOR_CUSTOM_EXT.
+slink:VkSamplerCreateInfo::pname:borderColor must be set to one of:
+  * ename:VK_BORDER_COLOR_CUSTOM_FLOAT_EXT
+  * ename:VK_BORDER_COLOR_CUSTOM_INT_EXT
+  * ename:VK_BORDER_COLOR_CUSTOM_UINT_EXT
 
-When ename:VK_BORDER_COLOR_CUSTOM_EXT is supplied, applications must provide a
+When ename:VK_BORDER_COLOR_CUSTOM_FLOAT_EXT, ename:VK_BORDER_COLOR_CUSTOM_INT_EXT
+or ename:VK_BORDER_COLOR_CUSTOM_UINT_EXT is used, applications must provide a
 slink:VkSamplerCustomBorderColorCreateInfoEXT in the pNext chain for
 slink:VkSamplerCreateInfo.
 
@@ -33,7 +37,9 @@ flink:vkDestroySampler is thread-safe when a custom border color is used.
   ** ename:VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_BORDER_COLOR_FEATURES_EXT
 
   * Extending elink:VkBorderColor:
-  ** ename:VK_BORDER_COLOR_CUSTOM_EXT
+  ** ename:VK_BORDER_COLOR_CUSTOM_FLOAT_EXT
+  ** ename:VK_BORDER_COLOR_CUSTOM_INT_EXT
+  ** ename:VK_BORDER_COLOR_CUSTOM_UINT_EXT
 
 === New Structures
 
@@ -47,9 +53,6 @@ flink:vkDestroySampler is thread-safe when a custom border color is used.
 
 1) Should VkClearColorValue be used for the border color value, or should we
 have our own struct/union?
-Do we need to specify the type of the input values for the components? This is
-more of a concern if VkClearColorValue is used here because it provides a union
-of float,int,uint types.
 
 OPEN
 
@@ -87,3 +90,7 @@ OPEN
 
   * Revision 5, 2019-10-14 (Liam Middlebrook)
     - Added features bit
+
+  * Revision 6, 2019-10-15 (Joshua Ashton)
+    - Type-ize VK_BORDER_COLOR_CUSTOM
+    - Fix const-ness on pNext of VkSamplerCustomBorderColorCreateInfoEXT
