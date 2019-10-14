@@ -1,4 +1,4 @@
-include::{generated}/meta//VK_EXT_custom_border_color.txt[]
+include::{generated}/meta/VK_EXT_custom_border_color.txt[]
 
 *Last Modified Date*::
     2019-10-12

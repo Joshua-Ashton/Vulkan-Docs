@@ -879,7 +879,7 @@ include::{generated}/api/structs/VkSamplerCustomBorderColorCreateInfoEXT.txt[]
 
   * pname:sType is the type of this structure.
   * pname:pNext is `NULL` or a pointer to an extension-specific structure.
-  * pname:borderColor is a elink:VkClearColor value representing the sampler
+  * pname:borderColor is a slink:VkClearColorValue representing the sampler
     color. XXX[ljm]{fix this wording, right now is a bit circular}
 
 include::{generated}/validity/structs/VkSamplerCustomBorderColorCreateInfoEXT.txt[]
