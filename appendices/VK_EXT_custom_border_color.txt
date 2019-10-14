@@ -1,7 +1,7 @@
 include::{generated}/meta/VK_EXT_custom_border_color.txt[]
 
 *Last Modified Date*::
-    2019-10-12
+    2019-10-14
 *IP Status*::
     No known IP claims.
 *Contributors*::
@@ -30,6 +30,7 @@ flink:vkDestroySampler is thread-safe when a custom border color is used.
   * Extending elink:VkStructureType:
   ** ename:VK_STRUCTURE_TYPE_SAMPLER_CUSTOM_BORDER_COLOR_CREATE_INFO_EXT
   ** ename:VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_BORDER_COLOR_PROPERTIES_EXT
+  ** ename:VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_BORDER_COLOR_FEATURES_EXT
 
   * Extending elink:VkBorderColor:
   ** ename:VK_BORDER_COLOR_CUSTOM_EXT
@@ -38,6 +39,7 @@ flink:vkDestroySampler is thread-safe when a custom border color is used.
 
   * slink:VkSamplerCustomBorderColorCreateInfoEXT
   * slink:VkPhysicalDeviceCustomBorderColorPropertiesEXT
+  * slink:VkPhysicalDeviceCustomBorderColorFeaturesEXT
 
 === New Functions
 
@@ -82,3 +84,6 @@ OPEN
 
   * Revision 4, 2019-10-12 (Joshua Ashton)
     - Changed maxUniqueCustomBorderColors to a uint32_t from a VkDeviceSize
+
+  * Revision 5, 2019-10-14 (Liam Middlebrook)
+    - Added features bit

@@ -4215,6 +4215,11 @@ typedef void <name>CAMetalLayer</name>;
             <member noautovalidity="true"><type>void</type>*                                                                   <name>pNext</name></member>
             <member><type>uint32_t</type>                                                                                      <name>maxUniqueCustomBorderColors</name></member>
         </type>
+        <type category="struct" name="VkPhysicalDeviceCustomBorderColorFeaturesEXT" structextends="VkPhysicalDeviceFeatures2,VkDeviceCreateInfo">
+            <member values="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_BORDER_COLOR_FEATURES_EXT"><type>VkStructureType</type> <name>sType</name></member>
+            <member noautovalidity="true"><type>void</type>*        <name>pNext</name></member>
+            <member><type>VkBool32</type>                           <name>customBorderColors</name></member>
+        </type>
     </types>
 
     <comment>Vulkan enumerant (token) definitions</comment>
@@ -11609,9 +11614,11 @@ typedef void <name>CAMetalLayer</name>;
                 <enum value="&quot;VK_EXT_custom_border_color&quot;"        name="VK_EXT_CUSTOM_BORDER_COLOR_EXTENSION_NAME"/>
                 <enum offset="0" extends="VkStructureType"                  name="VK_STRUCTURE_TYPE_SAMPLER_CUSTOM_BORDER_COLOR_CREATE_INFO_EXT"/>
                 <enum offset="1" extends="VkStructureType"                  name="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_BORDER_COLOR_PROPERTIES_EXT"/>
-                <enum offset="2" extends="VkBorderColor"                    name="VK_BORDER_COLOR_CUSTOM_EXT"/>
+                <enum offset="2" extends="VkStructureType"                  name="VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_BORDER_COLOR_FEATURES_EXT"/>
+                <enum offset="3" extends="VkBorderColor"                    name="VK_BORDER_COLOR_CUSTOM_EXT"/>
                 <type name="VkSamplerCustomBorderColorCreateInfoEXT"/>
                 <type name="VkPhysicalDeviceCustomBorderColorPropertiesEXT"/>
+                <type name="VkPhysicalDeviceCustomBorderColorFeaturesEXT"/>
             </require>
         </extension>
         <extension name="VK_EXT_extension_289" number="289" author="EXT" contact="Jan-Harald Fredriksen @janharaldfredriksen-arm" supported="disabled">

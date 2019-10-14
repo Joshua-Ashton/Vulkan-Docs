@@ -2624,6 +2624,27 @@ include::{generated}/validity/structs/VkPhysicalDeviceCoherentMemoryFeaturesAMD.
 endif::VK_AMD_device_coherent_memory[]
 
 
+ifdef::VK_EXT_custom_border_color[]
+
+[open,refpage='VkPhysicalDeviceCustomBorderColorFeaturesEXT',desc='Structure describing whether custom border colors can be supported by an implementation',type='structs']
+--
+The sname:VkPhysicalDeviceCustomBorderColorFeaturesEXT structure is defined as:
+
+include::{generated}/api/structs/VkPhysicalDeviceCustomBorderColorFeaturesEXT.txt[]
+
+The members of the sname:VkPhysicalDeviceCustomBorderColorFeaturesEXT structure
+describe the following features:
+
+  * [[features-customBorderColors]] pname:customBorderColors indicates
+    that the implementation supports providing a custom borderColor value at
+    sampler creation time. XXX[ljm]{make this reference the createinfo struct}
+
+include::{generated}/validity/structs/VkPhysicalDeviceCustomBorderColorFeaturesEXT.txt[]
+--
+
+endif::VK_EXT_custom_border_color[]
+
+
 [[features-requirements]]
 == Feature Requirements
 
