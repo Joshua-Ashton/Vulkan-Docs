@@ -4207,7 +4207,7 @@ typedef void <name>CAMetalLayer</name>;
         </type>
         <type category="struct" name="VkSamplerCustomBorderColorCreateInfoEXT" structextends="VkSamplerCreateInfo">
             <member values="VK_STRUCTURE_TYPE_SAMPLER_CUSTOM_BORDER_COLOR_CREATE_INFO_EXT"><type>VkStructureType</type> <name>sType</name></member>
-            <member noautovalidity="true"><type>void</type>*                                                            <name>pNext</name></member>
+            <member>const <type>void</type>*                                                                            <name>pNext</name></member>
             <member><type>VkClearColorValue</type>                                                                      <name>borderColor</name></member>
         </type>
         <type category="struct" name="VkPhysicalDeviceCustomBorderColorPropertiesEXT" structextends="VkPhysicalDeviceProperties2" returnedonly="true">
