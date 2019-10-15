@@ -261,6 +261,17 @@ ifdef::VK_EXT_fragment_density_map[]
     If pname:flags includes ename:VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT, then
     pname:unnormalizedCoordinates must: be ename:VK_FALSE.
 endif::VK_EXT_fragment_density_map[]
+ifdef::VK_EXT_custom_border_color[]
+  * [[VUID-something-something-something]]
+    If pname:borderColor is set to one of:
++
+    ** ename:VK_BORDER_COLOR_CUSTOM_FLOAT_EXT
+    ** ename:VK_BORDER_COLOR_CUSTOM_INT_EXT
+    ** ename:VK_BORDER_COLOR_CUSTOM_UINT_EXT
++
+then a slink:VkSamplerCustomBorderColorCreateInfoEXT must: be present
+in the pname:pNext chain.
+endif::VK_EXT_custom_border_color[]
 ****
 
 include::{generated}/validity/structs/VkSamplerCreateInfo.txt[]
@@ -431,16 +442,23 @@ include::{generated}/api/enums/VkBorderColor.txt[]
     floating-point format, white color.
   * ename:VK_BORDER_COLOR_INT_OPAQUE_WHITE specifies an opaque, integer
     format, white color.
+ifdef::VK_EXT_custom_border_color[]
+  * ename:VK_BORDER_COLOR_CUSTOM_FLOAT_EXT indicates that a
+    slink:VkSamplerCustomBorderColorCreateInfoEXT structure is present in the
+    slink:VkSamplerCreateInfo::pname:pNext chain which contains color data
+    representative of a color which may not be listed above, floating-point format.
+  * ename:VK_BORDER_COLOR_CUSTOM_INT_EXT indicates that a
+    slink:VkSamplerCustomBorderColorCreateInfoEXT structure is present in the
+    slink:VkSamplerCreateInfo::pname:pNext chain which contains color data
+    representative of a color which may not be listed above, integer format.
+  * ename:VK_BORDER_COLOR_CUSTOM_UINT_EXT indicates that a
+    slink:VkSamplerCustomBorderColorCreateInfoEXT structure is present in the
+    slink:VkSamplerCreateInfo::pname:pNext chain which contains color data
+    representative of a color which may not be listed above, unsigned integer format.
+endif::VK_EXT_custom_border_color[]
 
 These colors are described in detail in <<textures-texel-replacement, Texel
 Replacement>>.
-
-ifdef::VK_EXT_custom_border_color[]
-  * ename:VK_BORDER_COLOR_CUSTOM_EXT indicates that a
-    slink:VkSamplerCustomBorderColorCreateInfoEXT structure is present in the
-    slink::VkSamplerCreateInfo::pname:pNext chain which contains color data
-    representative of a color which may not be listed above.
-endif::VK_EXT_custom_border_color[]
 
 --
 
@@ -869,7 +887,7 @@ ifdef::VK_EXT_custom_border_color[]
 [open,refpage='VkSamplerCustomBorderColorCreateInfoEXT',desc='Structure specifying custom border color',type='structs']
 --
 
-Applications may wish to provide a custom border color which is not listed under
+Applications can provide a custom border color which is not listed under
 ename:VkBorderColor, this structure allows for specifying a custom color value
 to be added to the slink:VkSamplerCreateInfo::pname:pNext chain.
 
@@ -882,7 +900,14 @@ include::{generated}/api/structs/VkSamplerCustomBorderColorCreateInfoEXT.txt[]
   * pname:borderColor is a slink:VkClearColorValue representing the sampler
     color. XXX[ljm]{fix this wording, right now is a bit circular}
 
+.Valid Usage
+****
+  * [[VUID-something-something-something]]
+  The application must not exceed the number of sname:VkPhysicalDeviceCustomBorderColorPropertiesEXT::pname:maxUniqueCustomBorderColors if it is non-zero.
+****
+
 include::{generated}/validity/structs/VkSamplerCustomBorderColorCreateInfoEXT.txt[]
+
 --
 
 endif::VK_EXT_custom_border_color[]

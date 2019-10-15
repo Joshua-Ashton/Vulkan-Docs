@@ -13,6 +13,7 @@ for use when the sampler address mode ename:VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BOR
 
 To create a sampler which uses a custom border color
 slink:VkSamplerCreateInfo::pname:borderColor must be set to one of:
+
   * ename:VK_BORDER_COLOR_CUSTOM_FLOAT_EXT
   * ename:VK_BORDER_COLOR_CUSTOM_INT_EXT
   * ename:VK_BORDER_COLOR_CUSTOM_UINT_EXT
@@ -22,12 +23,12 @@ or ename:VK_BORDER_COLOR_CUSTOM_UINT_EXT is used, applications must provide a
 slink:VkSamplerCustomBorderColorCreateInfoEXT in the pNext chain for
 slink:VkSamplerCreateInfo.
 
-For implementations with a limited number of border colors, they should be reference counted
-when the sampler is created/destroyed. This means that freeing the last sampler that used
-a custom border color will also free up the slot for another border color to be used.
+For implementations with a limited number of border colors, they must be reference counted:
 
-The implementation should maintain the guarantee that flink:vkCreateSampler and
-flink:vkDestroySampler is thread-safe when a custom border color is used.
+  * When a sampler is successfully created
+  * When a sampler is destroyed
+Guranteeing that freeing the last sampler that used a custom border color will also
+free up the slot for another border color to be used.
 
 === New Enum Constants
 
