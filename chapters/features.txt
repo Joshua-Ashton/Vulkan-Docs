@@ -2637,7 +2637,9 @@ describe the following features:
 
   * [[features-customBorderColors]] pname:customBorderColors indicates
     that the implementation supports providing a custom borderColor value at
-    sampler creation time. XXX[ljm]{make this reference the createinfo struct}
+    sampler creation time. Applications are able to provide this custom value
+    through sname:VkSamplerCustomBorderColorCreateInfoEXT in the pname:pNext
+    chain of the sname:VkSamplerCreateInfo structure.
 
 include::{generated}/validity/structs/VkPhysicalDeviceCustomBorderColorFeaturesEXT.txt[]
 --
