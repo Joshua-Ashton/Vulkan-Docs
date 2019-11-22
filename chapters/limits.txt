@@ -2652,6 +2652,9 @@ endif::VK_KHR_timeline_semaphore[]
 ifdef::VK_EXT_line_rasterization[]
 | code:uint32_t            | pname:lineSubPixelPrecisionBits                | `<<VK_EXT_line_rasterization>>`
 endif::VK_EXT_line_rasterization[]
+ifdef::VK_EXT_custom_border_color[]
+| code:uint32_t            | pname:maxUniqueCustomBorderColors              | `<<VK_EXT_custom_border_color>>`
+endif::VK_EXT_custom_border_color[]
 |====
 
 [[limits-required]]
@@ -3010,4 +3013,21 @@ respectively, otherwise both members must: be `0`.
 
 endif::VK_EXT_sample_locations[]
 
+ifdef::VK_EXT_custom_border_color[]
 
+[open,refpage='VkPhysicalDeviceCustomBorderColorPropertiesEXT',desc='Structure describing whether custom border colors can be supported by an implementation',type='structs']
+--
+The sname:VkPhysicalDeviceCustomBorderColorPropertiesEXT structure is defined as:
+
+include::{generated}/api/structs/VkPhysicalDeviceCustomBorderColorPropertiesEXT.txt[]
+
+The members of the sname:VkPhysicalDeviceCustomBorderColorPropertiesEXT structure
+describe the following features:
+
+  * [[limits-maxUniqueCustomBorderColors]] pname:maxUniqueCustomBorderColors indicates
+    the maximum number of custom border colors the application may provide.
+
+include::{generated}/validity/structs/VkPhysicalDeviceCustomBorderColorPropertiesEXT.txt[]
+--
+
+endif::VK_EXT_custom_border_color[]
