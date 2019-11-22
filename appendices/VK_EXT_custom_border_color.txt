@@ -27,7 +27,8 @@ For implementations with a limited number of border colors, they must be referen
 
   * When a sampler is successfully created
   * When a sampler is destroyed
-Guranteeing that freeing the last sampler that used a custom border color will also
+
+Guaranteeing that freeing the last sampler that used a custom border color will also
 free up the slot for another border color to be used.
 
 === New Enum Constants
@@ -68,7 +69,7 @@ OPEN
 3) Should this be supported for immutable samplers at all, or by a feature bit?
 Some implementations may not be able to support custom border colors on
 immutable samplers -- is it worthwhile enabling this to work on them for
-implementations that can support it, or forbbiding it entirely.
+implementations that can support it, or forbidding it entirely.
 
 OPEN
 
