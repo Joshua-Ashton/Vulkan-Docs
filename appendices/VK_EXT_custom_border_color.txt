@@ -11,8 +11,8 @@ include::{generated}/meta/VK_EXT_custom_border_color.txt[]
 This extension provides cross-vendor functionality to specify a custom border color
 for use when the sampler address mode ename:VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER is used.
 
-To create a sampler which uses a custom border color
-slink:VkSamplerCreateInfo::pname:borderColor must be set to one of:
+To create a sampler which uses a custom border color set
+slink:VkSamplerCreateInfo::pname:borderColor to one of:
 
   * ename:VK_BORDER_COLOR_CUSTOM_FLOAT_EXT
   * ename:VK_BORDER_COLOR_CUSTOM_INT_EXT
