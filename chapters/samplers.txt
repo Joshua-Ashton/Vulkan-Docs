@@ -262,7 +262,7 @@ ifdef::VK_EXT_fragment_density_map[]
     pname:unnormalizedCoordinates must: be ename:VK_FALSE.
 endif::VK_EXT_fragment_density_map[]
 ifdef::VK_EXT_custom_border_color[]
-  * [[VUID-something-something-something]]
+  * [[VUID-VkSamplerCreateInfo-flags-02581]]
     If pname:borderColor is set to one of:
 +
     ** ename:VK_BORDER_COLOR_CUSTOM_FLOAT_EXT
@@ -902,7 +902,7 @@ include::{generated}/api/structs/VkSamplerCustomBorderColorCreateInfoEXT.txt[]
 
 .Valid Usage
 ****
-  * [[VUID-something-something-something]]
+  * [[VUID-VkSamplerCustomBorderColorCreateInfo-maxUnique]]
   The application must not exceed the number of sname:VkPhysicalDeviceCustomBorderColorPropertiesEXT::pname:maxUniqueCustomBorderColors if it is non-zero.
 ****
 
