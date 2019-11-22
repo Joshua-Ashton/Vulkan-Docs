@@ -6,7 +6,7 @@ include::{generated}/meta/VK_EXT_custom_border_color.txt[]
     No known IP claims.
 *Contributors*::
   - Joshua Ashton
-  - Liam Middlebrook, Nvidia
+  - Liam Middlebrook, NVIDIA
 
 This extension provides cross-vendor functionality to specify a custom border color
 for use when the sampler address mode ename:VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER is used.
