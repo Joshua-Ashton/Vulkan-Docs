@@ -903,7 +903,14 @@ include::{generated}/api/structs/VkSamplerCustomBorderColorCreateInfoEXT.txt[]
 .Valid Usage
 ****
   * [[VUID-VkSamplerCustomBorderColorCreateInfo-maxUnique]]
-  The application must not exceed the number of sname:VkPhysicalDeviceCustomBorderColorPropertiesEXT::pname:maxUniqueCustomBorderColors if it is non-zero.
+  The maximum number of custom border colors which can: be simultaneously
+  created on a device is implementation-dependent and specfied by the
+  <<limits-maxUniqueCustomBorderColors,maxUniqueCustomBorderColors>> member of
+  the slink:VkPhysicalDeviceCustomBorderColorPropertiesEXT structure. If
+  pname:maxUniqueCustomBorderColors is zero, the implementation supports an
+  unlimited number of custom border colors.
+  If pname:maxUniqueCustomBorderColors is exceeded, fname:vkCreateSampler will
+  return ename:VK_ERROR_TOO_MANY_OBJECTS
 ****
 
 include::{generated}/validity/structs/VkSamplerCustomBorderColorCreateInfoEXT.txt[]
