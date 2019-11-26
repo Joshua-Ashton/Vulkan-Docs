@@ -70,8 +70,8 @@ otherwise not be required.
 
 RESOLVED: Added
           sname:VkPhysicalDeviceCustomBorderColorPropertiesEXT::pname:maxUniqueCustomBorderColors
-          for tracking implementation-specific limit. vkCreateSampler will fail
-          if limit exists and is exceeded.
+          for tracking implementation-specific limit, and Valid Usage statement
+          handling overflow.
 
 3) Should this be supported for immutable samplers at all, or by a feature bit?
 Some implementations may not be able to support custom border colors on

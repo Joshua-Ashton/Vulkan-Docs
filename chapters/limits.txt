@@ -3025,9 +3025,8 @@ The members of the sname:VkPhysicalDeviceCustomBorderColorPropertiesEXT structur
 describe the following features:
 
   * [[limits-maxUniqueCustomBorderColors]] pname:maxUniqueCustomBorderColors indicates
-    the maximum number of custom border colors the application may provide. If
-    pname:maxUniqueCustomBorderColors is zero, the implementation supports an
-    unlimited number of custom border colors.
+    the maximum number of custom border colors the application may use at the
+    same time.
 
 include::{generated}/validity/structs/VkPhysicalDeviceCustomBorderColorPropertiesEXT.txt[]
 --
