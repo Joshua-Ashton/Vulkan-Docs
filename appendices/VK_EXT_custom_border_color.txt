@@ -1,7 +1,7 @@
 include::{generated}/meta/VK_EXT_custom_border_color.txt[]
 
 *Last Modified Date*::
-    2019-10-15
+    2019-11-26
 *IP Status*::
     No known IP claims.
 *Contributors*::
@@ -69,7 +69,7 @@ however that may have lead to additional system resource consumption which would
 otherwise not be required.
 
 RESOLVED: Added
-          sname:VkPhysicalDeviceCustomBorderColorPropertiesEXT::pname:maxUniqueCustomBorderColors
+          sname:VkPhysicalDeviceCustomBorderColorPropertiesEXT::pname:maxCustomBorderColors
           for tracking implementation-specific limit, and Valid Usage statement
           handling overflow.
 
@@ -103,3 +103,6 @@ OPEN
   * Revision 6, 2019-10-15 (Joshua Ashton)
     - Type-ize VK_BORDER_COLOR_CUSTOM
     - Fix const-ness on pNext of VkSamplerCustomBorderColorCreateInfoEXT
+
+  * Revision 7, 2019-11-26 (Liam Middlebrook)
+    - Renamed maxUniqueCustomBorderColors to maxCustomBorderColors
