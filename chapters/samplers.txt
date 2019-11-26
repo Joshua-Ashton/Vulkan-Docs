@@ -887,7 +887,7 @@ ifdef::VK_EXT_custom_border_color[]
 [open,refpage='VkSamplerCustomBorderColorCreateInfoEXT',desc='Structure specifying custom border color',type='structs']
 --
 
-Applications can provide a custom border color which is not listed under
+Applications can: provide a custom border color which is not listed under
 ename:VkBorderColor, this structure allows for specifying a custom color value
 to be added to the slink:VkSamplerCreateInfo::pname:pNext chain.
 
