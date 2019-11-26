@@ -904,7 +904,7 @@ include::{generated}/api/structs/VkSamplerCustomBorderColorCreateInfoEXT.txt[]
 ****
   * [[VUID-VkSamplerCustomBorderColorCreateInfo-maxUnique]]
   The maximum number of custom border colors which can: be simultaneously
-  created on a device is implementation-dependent and specfied by the
+  created on a device is implementation-dependent and specified by the
   <<limits-maxUniqueCustomBorderColors,maxUniqueCustomBorderColors>> member of
   the slink:VkPhysicalDeviceCustomBorderColorPropertiesEXT structure. If
   pname:maxUniqueCustomBorderColors is zero, the implementation supports an
