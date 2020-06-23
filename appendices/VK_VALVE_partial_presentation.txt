@@ -1,0 +1,34 @@
+// Copyright (c) 2019-2020 The Khronos Group Inc.
+//
+// SPDX-License-Identifier: CC-BY-4.0
+
+include::{generated}/meta/{refprefix}VK_VALVE_partial_present.txt[]
+
+=== Other Extension Metadata
+
+*Last Modified Date*::
+    2020-06-23
+*IP Status*::
+    No known IP claims.
+*Contributors*::
+  - Joshua Ashton, Valve
+
+=== Description
+
+This device extension extends flink:vkQueuePresentKHR, from the
+`<<VK_KHR_swapchain>>` extension, and the functionality
+provided by `<<VK_KHR_incremental_present>>` to also allow a new
+set of exclusive regions for each image that will be updated as well
+as an offset into the source swapchain image(s).
+
+include::{generated}/interfaces/VK_VALVE_partial_present.txt[]
+
+=== Issues
+
+1) Should we call the dirty/changed regions pDamageRegions, pDirtyRegions
+or something else?
+
+=== Version History
+
+  * Revision 1, 2020-06-23 (Joshua Ashton)
+    - Internal revisions.

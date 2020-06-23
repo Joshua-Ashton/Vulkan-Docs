@@ -1,0 +1,88 @@
+// Copyright (c) 2014-2020 Khronos Group.
+//
+// SPDX-License-Identifier: CC-BY-4.0
+
+[open,refpage='VkPresentRegions2VALVE',desc='Structure of rectangular regions to update and hint of rectangular regions changed by vkQueuePresentKHR',type='structs']
+--
+
+When the `VK_VALVE_partial_present` extension is enabled, additional
+fields can: be specified that allow an application to specify that only
+certain rectangular regions of the presentable images of a swapchain are
+changed or to be updated on the surface, and an offset into the source
+swapchain image(s) for the update regions.
+
+Damage regions are an optimization hint that a presentation engine may:
+use to only update the region of a surface that is actually changing.
+The application still must: ensure that all pixels of a presented image
+contain the desired values, in case the presentation engine ignores this
+hint.
+
+An application can: provide this hint by adding a sname:VkPresentRegions2VALVE
+structure to the pname:pNext chain of the sname:VkPresentInfoKHR structure and
+filling in pname:pDamageRegions.
+
+Update regions the only regions on the surface that will be updated that a
+presentation engine must: use to only update a specific region of a surface.
+
+An application can: specify update regions and a source offset into the
+swapchain image(s) by adding a sname:VkPresentRegions2VALVE
+structure to the pname:pNext chain of the sname:VkPresentInfoKHR structure and
+filling in pname:pUpdateRegions.
+
+The distinction between damage regions and update regions is that damage regions
+specify the changed regions of an image as an optimization and may be ignored --
+where as update regions specify the only region that must be changed on the surface.
+
+The sname:VkPresentRegions2VALVE structure is defined as:
+
+include::{generated}/api/structs/VkPresentRegions2VALVE.txt[]
+
+  * pname:sType is the type of this structure.
+  * pname:pNext is `NULL` or a pointer to a structure extending this
+    structure.
+  * pname:swapchainCount is the number of swapchains being presented to by
+    this command.
+  * pname:pDamageRegions is `NULL` or a pointer to an array of
+    sname:VkPresentRegionKHR elements with pname:swapchainCount entries.
+    If not `NULL`, each element of pname:pDamageRegions contains the region that
+    has changed since the last present to the swapchain in the corresponding
+    entry in the sname:VkPresentInfoKHR::pname:pSwapchains array.
+  * pname:pUpdateRegions is `NULL` or a pointer to an array of
+    sname:VkUpdateRegionVALVE elements with pname:swapchainCount entries.
+    If not `NULL`, each element of pname:pUpdateRegions contains the
+    region that will be updated on the destination surfaces,
+    and a source offset into the swapchain image(s).
+
+.Valid Usage
+****
+  * pname:swapchainCount must: be the same value as
+    sname:VkPresentInfoKHR::pname:swapchainCount, where
+    sname:VkPresentInfoKHR is included in the pname:pNext chain of this
+    sname:VkPresentRegions2VALVE structure
+****
+
+include::{generated}/validity/structs/VkPresentRegions2VALVE.txt[]
+--
+
+[open,refpage='VkUpdateRegionVALVE',desc='Structure containing rectangular region of the surface to update for vkQueuePresentKHR and source offset for a given swapchain VkImage',type='structs']
+--
+
+For a given image and swapchain, the offset into the image and
+the region to update on the surface is specified by the
+sname:VkUpdateRegionVALVE structure, which is defined as:
+
+include::{generated}/api/structs/VkUpdateRegionVALVE.txt[]
+
+  * pname:srcOffset is the offset in pixels into the given image for the
+    swapchain's surface to update from.
+  * pname:dstRectangleCount is the number of rectangles in pname:pDstRectangles,
+    or zero if the entire surface is to be updated.
+  * pname:pDstRectangles is either `NULL` or a pointer to an array of
+    sname:VkRectLayerKHR structures.
+    The sname:VkRectLayerKHR structure is the framebuffer coordinates, plus
+    layer, of the region to update on the swapchain's surface.
+    If non-`NULL`, each entry in pname:pDstRectangles is a rectangle of the
+    given swapchain's surface to be updated.
+
+include::{generated}/validity/structs/VkUpdateRegionVALVE.txt[]
+-- 

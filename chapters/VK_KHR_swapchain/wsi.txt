@@ -1318,6 +1318,10 @@ ifdef::VK_KHR_incremental_present[]
 include::{chapters}/VK_KHR_incremental_present/wsi.txt[]
 endif::VK_KHR_incremental_present[]
 
+ifdef::VK_VALVE_partial_present[]
+include::{chapters}/VK_VALVE_partial_present/wsi.txt[]
+endif::VK_VALVE_partial_present[]
+
 ifdef::VK_KHR_display_swapchain[]
 include::{chapters}/VK_KHR_display_swapchain/display_swapchain_present.txt[]
 endif::VK_KHR_display_swapchain[]

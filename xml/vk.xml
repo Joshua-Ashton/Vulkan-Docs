@@ -4809,6 +4809,18 @@ typedef void <name>CAMetalLayer</name>;
             <member><type>VkDeviceSize</type>                       <name>robustStorageBufferAccessSizeAlignment</name></member>
             <member><type>VkDeviceSize</type>                       <name>robustUniformBufferAccessSizeAlignment</name></member>
         </type>
+        <type category="struct" name="VkUpdateRegionVALVE">
+            <member><type>VkOffset2D</type>                       <name>srcOffset</name><comment>The offset, in pixels, to the swapchain image(s) to be presented</comment></member>
+            <member optional="true"><type>uint32_t</type>         <name>dstRectangleCount</name><comment>Number of rectangles in pDstRectangles</comment></member>
+            <member optional="true" len="rectangleCount">const <type>VkRectLayerKHR</type>*   <name>pDstRectangles</name><comment>Array of rectangles to update on the destination surface</comment></member>
+        </type>
+        <type category="struct" name="VkPresentRegions2VALVE" structextends="VkPresentInfoKHR">
+            <member values="VK_STRUCTURE_TYPE_PRESENT_REGIONS2_VALVE"><type>VkStructureType</type> <name>sType</name></member>
+            <member>const <type>void</type>*                          <name>pNext</name></member>
+            <member><type>uint32_t</type>                             <name>swapchainCount</name><comment>Copy of VkPresentInfoKHR::swapchainCount</comment></member>
+            <member len="swapchainCount" optional="true">const <type>VkPresentRegionKHR</type>*   <name>pDamageRegions</name><comment>The regions that have, equivelant to VkPresentRegionsKHR::pRegions</comment></member>
+            <member len="swapchainCount" optional="true">const <type>VkUpdateRegionVALVE</type>*  <name>pUpdateRegions</name><comment>The only regions that must be updated, exclusively</comment></member>
+        </type>
     </types>
 
     <comment>Vulkan enumerant (token) definitions</comment>
@@ -13769,10 +13781,13 @@ typedef void <name>CAMetalLayer</name>;
                 <enum value="&quot;VK_EXT_extension_340&quot;"              name="VK_EXT_EXTENSION_340_EXTENSION_NAME"/>
             </require>
         </extension>
-        <extension name="VK_EXT_extension_341" number="341" author="EXT" contact="Joshua Ashton @Joshua-Ashton" supported="disabled">
+        <extension name="VK_VALVE_partial_present" number="341" type="device" requires="VK_KHR_incremental_present" author="VALVE" contact="Joshua Ashton @Joshua-Ashton" supported="vulkan">
             <require>
-                <enum value="0"                                             name="VK_EXT_EXTENSION_341_SPEC_VERSION"/>
-                <enum value="&quot;VK_EXT_extension_341&quot;"              name="VK_EXT_EXTENSION_341_EXTENSION_NAME"/>
+                <enum value="1"                                             name="VK_VALVE_PARTIAL_PRESENTATION_SPEC_VERSION"/>
+                <enum value="&quot;VK_VALVE_partial_present&quot;"     name="VK_VALVE_PARTIAL_PRESENTATION_EXTENSION_NAME"/>
+                <enum offset="0" extends="VkStructureType"                  name="VK_STRUCTURE_TYPE_PRESENT_REGIONS2_VALVE"/>
+                <type name="VkPresentRegions2VALVE"/>
+                <type name="VkUpdateRegionVALVE"/>
             </require>
         </extension>
         <extension name="VK_EXT_extension_342" number="342" author="EXT" contact="Ralph Potter gitlab:@r_potter" supported="disabled">
