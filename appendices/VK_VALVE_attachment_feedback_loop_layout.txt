@@ -1,0 +1,45 @@
+// Copyright 2020-2021 The Khronos Group Inc.
+//
+// SPDX-License-Identifier: CC-BY-4.0
+
+include::{generated}/meta/{refprefix}VK_VALVE_attachment_feedback_loop_layout.txt[]
+
+=== Other Extension Metadata
+
+*Last Modified Date*::
+    2021-03-09
+*IP Status*::
+    No known IP claims.
+*Contributors*::
+  - Joshua Ashton, Valve
+
+=== Description
+
+This extension adds a new image layout,
+ename:VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_VALVE, which allows
+applications to have an image layout in which they are able to
+both render to and sample/fetch from the same subresource of an image in a given
+render pass.
+
+Results from this are only defined for the following cases:
+
+  * One-to-one texel-to-pixel interactions.
+  * Reading/sampling from a region not currently being written
+    to the image as a color or depth/stencil attachment.
+  * Sampling or fetching from the image while it is not a
+    color or depth/stencil attachment in the current render pass.
+  * Writing to the image as a color or depth/stencil attachment while it is not
+    being sampled or fetched in the current render pass.
+
+Some applications and API layering efforts were using
+ename:VK_IMAGE_LAYOUT_GENERAL for feedback loops against the specification.
+This extension provides a legal way to implement this behaviour in instances
+where input attachments or image copies may not be an option or
+could severely hurt performance.
+
+include::{generated}/interfaces/VK_VALVE_attachment_feedback_loop_layout.txt[]
+
+=== Version History
+
+ * Revision 1, 2021-03-09 (Joshua Ashton)
+   - Initial draft.

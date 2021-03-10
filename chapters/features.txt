@@ -4095,6 +4095,26 @@ include::{generated}/validity/structs/VkPhysicalDeviceFragmentShadingRateEnumsFe
 
 endif::VK_NV_fragment_shading_rate_enums[]
 
+ifdef::VK_VALVE_attachment_feedback_loop_layout[]
+
+[open,refpage='VK_VALVE_attachment_feedback_loop_layout',desc='Structure indicating support for a render feedback loop image layout',type='structs']
+--
+The sname:VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesVALVE structure is defined as:
+
+include::{generated}/api/structs/VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesVALVE.txt[]
+
+The members of the sname:VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesVALVE structure
+describe the following features:
+
+  * [[features-attachmentFeedbackLoopLayout]] pname:attachmentFeedbackLoopLayout indicates that the
+    implementation must: support using a elink:VkImageLayout of
+    ename:VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_VALVE.
+
+include::{generated}/validity/structs/VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesVALVE.txt[]
+--
+
+endif::VK_VALVE_attachment_feedback_loop_layout[]
+
 [[features-requirements]]
 == Feature Requirements
 
